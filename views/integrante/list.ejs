@@ -1,0 +1,43 @@
+<%-include('../cabecalho.ejs');%>   
+
+<form method="post">
+    <input type="text" class="pesquisa" name="pesquisa">
+    <input type="submit" class="btn_pesquisa" value="Pesquisar">
+</form>
+
+<table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Projeto</th>
+            <th>Foto</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+        <% Integrantes.forEach(function(integrante){  %>
+        <tr>
+            <td><%=integrante._id%></td>
+            <td><%=integrante.nome%></td>
+            <td><%=integrante.email%></td>
+            <td><%=integrante.endereco%></td>
+            <td><%=integrante.projeto.nome%></td>
+
+            <td>
+                <img class="foto-user" src="/fotos/<%=integrante.foto%>">                
+            </td>
+            <td>
+                <a href="/integrante/edt/<%=integrante._id%>">
+                    <img src="/images/edit.png">
+                </a>
+            </td>
+            <td>
+                <a href="/integrante/del/<%=integrante._id%>">
+                    <img src="/images/lixeira.png">
+                </a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+<%-include('../rodape.ejs');%>

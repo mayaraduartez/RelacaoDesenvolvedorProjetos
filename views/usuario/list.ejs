@@ -1,0 +1,44 @@
+<%-include('../cabecalho.ejs');%>   
+
+<form method="post">
+    <input type="text" class="pesquisa" name="pesquisa">
+    <select name="tipo">
+        <option value="nome">Nome</option>
+        <option value="email">Email</option>
+    </select>
+    <input type="submit" class="btn_pesquisa" value="Pesquisar">
+</form>
+
+<table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Senha</th>
+            <th>Foto</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+        <% Usuarios.forEach(function(usuario){  %>
+        <tr>
+            <td><%=usuario._id%></td>
+            <td><%=usuario.nome%></td>
+            <td><%=usuario.email%></td>
+            <td><%=usuario.senha%></td>
+            <td>
+                <img class="foto-user" src="/fotos/<%=usuario.foto%>">                
+            </td>
+            <td>
+                <a href="/usuario/edt/<%=usuario._id%>">
+                    <img src="/images/edit.png">
+                </a>
+            </td>
+            <td>
+                <a href="/usuario/del/<%=usuario._id%>">
+                    <img src="/images/lixeira.png">
+                </a>
+            </td>
+        </tr>
+        <% }) %>    
+    </table>
+<%-include('../rodape.ejs');%>
