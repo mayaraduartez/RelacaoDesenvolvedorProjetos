@@ -1,5 +1,5 @@
 <%-include('../cabecalho.ejs');%>
-   <form method="post" enctype="multipart/form-data">
+   <form class="edt" method="post" enctype="multipart/form-data">
     Id: <input type="text" name="id" readonly value="<%=Projeto._id%>"><br>   
     Nome: <input type="text" name="nome" 
         placeholder="Digite seu nome" value="<%=Projeto.nome%>"><br>
@@ -11,5 +11,10 @@
         name="previsaoTermino" value="<%=Projeto.previsaoTermino%>"><br>
     Foto: <input type="file" name="foto"><br>
        <input type="submit" value="Enviar">
+    Desenvolvedor:
+       <select require name="desenvolvedor">
+           <option value=""> Escolha o desenvolvedor do projeto</option>
+       </select>
+       <br>
    </form> 
 <%-include('../rodape.ejs');%>

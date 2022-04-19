@@ -1,5 +1,6 @@
 <%-include('../cabecalho.ejs');%>   
-
+<p>Buscar projeto por nome: 
+</p>
 <form method="post">
     <input type="text" class="pesquisa" name="pesquisa">
     <input type="submit" class="btn_pesquisa" value="Pesquisar">
@@ -11,6 +12,7 @@
             <th>Nome</th>
             <th>Data de inicio</th>
             <th>Previsão de fim</th>
+            <th>Desenvolvedor</th>
             <th>Foto</th>
             <th>Editar</th>
             <th>Deletar</th>
@@ -21,6 +23,7 @@
             <td><%=projeto.nome%></td>
             <td><%=projeto.dataInicio%></td>
             <td><%=projeto.previsaoTermino%></td>
+            <td><%=projeto.desenvolvedores.nome%></td>
             <td>
                 <img class="foto-user" src="/fotos/<%=projeto.foto%>">                
             </td>

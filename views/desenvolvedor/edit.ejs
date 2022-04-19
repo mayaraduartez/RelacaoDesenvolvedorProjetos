@@ -1,0 +1,14 @@
+<%-include('../cabecalho.ejs');%>
+   <form class="add" method="post" enctype="multipart/form-data">
+       Id: <input type="hidden" name="id" value="<%=Desenvolvedor._id%>"><br>
+       Nome: <input type="text" name="nome" value="<%=Desenvolvedor.nome%>"
+        placeholder="Digite seu nome"><br>
+       Email: <input type="email" name="email" value="<%=Desenvolvedor.email%>"
+        placeholder="Digite a descrição do projeto"><br>
+       Area: <input type="area" name="area" value="<%=Desenvolvedor.area%>"><br> 
+       Endereço: <input type="text" name="endereco" value="<%=Desenvolvedor.endereco%>"
+       placeholder="Digite seu endereço"> <br>
+       Foto: <input type="file" name="foto" required><br>
+       <input type="submit" value="Enviar">
+   </form> 
+<%-include('../rodape.ejs');%>

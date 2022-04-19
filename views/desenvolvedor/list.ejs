@@ -1,5 +1,10 @@
 <%-include('../cabecalho.ejs');%>   
-
+<p>Buscar por:
+    <select name="tipo">
+        <option value="nome">Nome</option>
+        <option value="email">Email</option>
+    </select><br>    
+</p>
 <form method="post">
     <input type="text" class="pesquisa" name="pesquisa">
     <input type="submit" class="btn_pesquisa" value="Pesquisar">
@@ -10,34 +15,35 @@
             <th>Id</th>
             <th>Nome</th>
             <th>Email</th>
+            <th>Area</th>
             <th>Endereço</th>
-            <th>Projeto</th>
             <th>Foto</th>
             <th>Editar</th>
             <th>Deletar</th>
         </tr>
-        <% Integrantes.forEach(function(integrante){  %>
+        <% Desenvolvedores.forEach(function(desenvolvedor){  %>
         <tr>
-            <td><%=integrante._id%></td>
-            <td><%=integrante.nome%></td>
-            <td><%=integrante.email%></td>
-            <td><%=integrante.endereco%></td>
-            <td><%=integrante.projeto.nome%></td>
+            <td><%=desenvolvedor._id%></td>
+            <td><%=desenvolvedor.nome%></td>
+            <td><%=desenvolvedor.email%></td>
+            <td><%=desenvolvedor.area%></td>
+            <td><%=desenvolvedor.endereco%></td>
 
             <td>
-                <img class="foto-user" src="/fotos/<%=integrante.foto%>">                
+                <img class="foto-user" src="/fotos/<%=desenvolvedor.foto%>">                
             </td>
             <td>
-                <a href="/integrante/edt/<%=integrante._id%>">
+                <a href="/desenvolvedor/edt/<%=desenvolvedor._id%>">
                     <img src="/images/edit.png">
                 </a>
             </td>
             <td>
-                <a href="/integrante/del/<%=integrante._id%>">
+                <a href="/desenvolvedor/del/<%=desenvolvedor._id%>">
                     <img src="/images/lixeira.png">
                 </a>
             </td>
         </tr>
         <% }) %>
     </table>
+
 <%-include('../rodape.ejs');%>

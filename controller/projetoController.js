@@ -1,9 +1,12 @@
 var Projeto = require("../model/Projeto");
+var Desenvolvedor = require("../model/Desenvolvedor");
 
 function listarProjetos(req, res) {
-  Projeto.find({}).then(function (docs) {
-    res.render("projeto/list.ejs", { Projetos: docs });
-  });
+  Projeto.find({})
+    .populate({ path: "desenvolvedores", model: "Desenvolvedor" })
+    .then(function (docs) {
+      res.render("projeto/list.ejs", { Projetos: docs });
+    });
 }
 
 function listarFiltro(req, res) {
@@ -15,7 +18,9 @@ function listarFiltro(req, res) {
 }
 
 function abreAdd(req, res) {
-  res.render("projeto/add.ejs", {});
+  Desenvolvedor.find({}).then(function (desenvolvedores) {
+    res.render("projeto/add.ejs", { Desenvolvedores: desenvolvedores });
+  });
 }
 
 function add(req, res) {
@@ -24,6 +29,7 @@ function add(req, res) {
     descricao: req.body.descricao,
     dataInicio: req.body.dataInicio,
     previsaoTermino: req.body.previsaoTermino,
+    desenvolvedores: req.body.desenvolvedor,
   });
   if (req.file.filename != "") {
     projeto.foto = req.file.filename;

@@ -1,12 +1,20 @@
 <%-include('../cabecalho.ejs');%>
-   <form method="post" enctype="multipart/form-data">
+   <form class="add" method="post" enctype="multipart/form-data">
        Nome: <input type="text" name="nome" 
         placeholder="Digite seu nome"><br>
        Descrição: <input type="text" name="descricao" 
         placeholder="Digite a descrição do projeto"><br>
        Data de inicio do projeto: <input type="date" name="dataInicio"><br>
        Previsão de termino do projeto: <input type="date" name="previsaoTermino"><br>
+       Desenvolvedor:
+       <select require name="desenvolvedor">
+           <%Desenvolvedores.forEach(function(desenvolvedor){%>
+            <option value=""></option>
+            <option value="<%=desenvolvedor._id%>"><%=desenvolvedor.nome%></option>
+            <%})%>
+       </select>
+       <br>
        Foto: <input type="file" name="foto"><br>
-       <input type="submit" value="Enviar">
+       <input type="submit" class="conteudo-principal-escrito-botao" value="Enviar">
    </form> 
 <%-include('../rodape.ejs');%>
